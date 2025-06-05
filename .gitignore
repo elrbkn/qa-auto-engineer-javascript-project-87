@@ -1,0 +1,25 @@
+# node_modules — зависимости, ставятся локально через npm install
+node_modules/
+
+# логи
+logs/
+*.log
+npm-debug.log*
+
+# .env — переменные окружения
+.env
+
+# кэш и временные файлы
+*.tmp
+*.temp
+.DS_Store
+
+# результаты линтера или тестов
+coverage/
+*.lcov
+
+# IDE/редактор
+.vscode/
+.idea/
+*.sw?
+
