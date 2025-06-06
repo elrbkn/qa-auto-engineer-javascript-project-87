@@ -1,6 +1,6 @@
 import formatPlain from './plain.js';
 import formatStylish from './stylish.js';
-
+import formatJson from './json.js';
 
 const format = (diff, formatName) => {
   switch (formatName) {
@@ -8,6 +8,8 @@ const format = (diff, formatName) => {
       return formatPlain(diff);
     case 'stylish':
       return formatStylish(diff);
+    case 'json':
+      return formatJson(diff);
     default:
       throw new Error(`Unknown format: ${formatName}`);
   }

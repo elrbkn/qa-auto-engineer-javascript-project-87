@@ -21,6 +21,14 @@ Property 'proxy' was removed
 Property 'timeout' was updated. From 50 to 20
 Property 'verbose' was added with value: true`;
 
+const expectedJson = [
+  { key: 'follow', type: 'removed', value: false },
+  { key: 'host', type: 'unchanged', value: 'hexlet.io' },
+  { key: 'proxy', type: 'removed', value: '123.234.53.22' },
+  { key: 'timeout', type: 'updated', oldValue: 50, newValue: 20 },
+  { key: 'verbose', type: 'added', value: true },
+];
+
 test('gendiff flat JSON (stylish)', () => {
   const file1 = getFixturePath('file1.json');
   const file2 = getFixturePath('file2.json');
@@ -43,4 +51,18 @@ test('gendiff flat YAML (plain)', () => {
   const file1 = getFixturePath('file1.yml');
   const file2 = getFixturePath('file2.yml');
   expect(genDiff(file1, file2, 'plain')).toBe(expectedPlain);
+});
+
+test('gendiff flat JSON (json)', () => {
+  const file1 = getFixturePath('file1.json');
+  const file2 = getFixturePath('file2.json');
+  const result = JSON.parse(genDiff(file1, file2, 'json'));
+  expect(result).toEqual(expectedJson);
+});
+
+test('gendiff flat YAML (json)', () => {
+  const file1 = getFixturePath('file1.yml');
+  const file2 = getFixturePath('file2.yml');
+  const result = JSON.parse(genDiff(file1, file2, 'json'));
+  expect(result).toEqual(expectedJson);
 });
