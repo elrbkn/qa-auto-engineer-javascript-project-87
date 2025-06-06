@@ -1,6 +1,4 @@
 import _ from 'lodash';
-import parseFile from './parsers.js';
-import format from './formatters/index.js';
 
 const buildDiff = (data1, data2) => {
   const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
@@ -27,11 +25,4 @@ const buildDiff = (data1, data2) => {
   });
 };
 
-const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
-  const data1 = parseFile(filepath1);
-  const data2 = parseFile(filepath2);
-  const diff = buildDiff(data1, data2);
-  return format(diff, formatName);
-};
-
-export default genDiff;
+export default buildDiff;
