@@ -5,13 +5,14 @@
   "main": "gendiff.js",
   "type": "module",
   "scripts": {
-  "test": "node --experimental-vm-modules node_modules/.bin/jest",
-  "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage"
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "commander": "^14.0.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

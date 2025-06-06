@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import yaml from 'js-yaml'; // ← обязательно установить: npm i js-yaml
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 
@@ -9,10 +10,15 @@ const readFile = (filepath) => {
 };
 
 const parse = (data, ext) => {
-  if (ext === '.json') {
-    return JSON.parse(data);
+  switch (ext) {
+    case '.json':
+      return JSON.parse(data);
+    case '.yml':
+    case '.yaml':
+      return yaml.load(data);
+    default:
+      throw new Error(`Unsupported file format: ${ext}`);
   }
-  throw new Error(`Unsupported file format: ${ext}`);
 };
 
 const parseFile = (filepath) => {
